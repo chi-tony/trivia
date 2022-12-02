@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <title>Trivia!</title>
+</head>
+
+
+<body>
+    <div class="header">
+        <h1>Trivia!</h1>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Part 1: Multiple Choice</h2>
+            <hr>
+
+            <!--Ask multiple choice question-->
+            <h3>What is the capital city of Canada?</h3>
+
+            <!--Add buttons for answer choices. If button clicked, execute designated function-->
+            <button id="btn1" onclick="answer_a()">Toronto</button>
+            <button id="btn2" onclick="answer_b()">Ottawa</button>
+            <button id="btn3" onclick="answer_c()">Vancouver</button>
+
+            <!--Add division for answer pop up display-->
+            <div id="answer1"></div>
+
+            <script>
+                // Assign variables based on button and divisor element
+                const btn1 = document.getElementById('btn1');
+                const btn2 = document.getElementById('btn2');
+                const btn3 = document.getElementById('btn3');
+                var answer1 = document.getElementById('answer1');
+
+                // If first button is pressed, change colour to red and change division text to 'Incorrect'
+                function answer_a() {
+                    btn1.style.backgroundColor = 'red';
+                    answer1.innerHTML = "Incorrect";
+                }
+
+                // If second button is pressed, change colour to green and change division text to 'Correct!'
+                function answer_b() {
+                    btn2.style.backgroundColor = 'green';
+                    answer1.innerHTML = "Correct!";
+                }
+
+                // If third button is pressed, change colour to red and change division text to 'Incorrect'
+                function answer_c() {
+                    btn3.style.backgroundColor = 'red';
+                    answer1.innerHTML = "Incorrect";
+                }
+            </script>
+        </div>
+
+        <div class="section">
+            <h2>Part 2: Free Response</h2>
+            <hr>
+
+            <!--Ask free response question-->
+            <h3>How many states are in the United States of America?</h3>
+
+            <!--Add text field and submit button-->
+            <input type="text" id="textbox" autocomplete="off" placeholder="Answer...">
+            <button type="button" onclick="checkAnswer()">Submit</button>
+
+            <!--Add division for answer pop up display-->
+            <div id="answer2"></div>
+
+            <script>
+                // Assign variable to text field element
+                const textbox = document.getElementById('textbox');
+
+                // Set correct answer
+                var answer = 50;
+
+                function checkAnswer() {
+                    // Get input value
+                    var response = document.getElementById('textbox').value;
+
+                    // Compare input with correct answer and change division text box to green
+                    if (response == answer) {
+                        textbox.style.backgroundColor = 'green';
+                        answer2.innerHTML = "Correct!";
+                    }
+
+                    // Input provided but not correct answer, change division text to red
+                    else if (response.length != 0) {
+                        textbox.style.backgroundColor = 'red';
+                        answer2.innerHTML = "Incorrect";
+                    }
+                }
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>
